@@ -14,12 +14,23 @@ Na het verder analyseren van de code merk ik dat ik toch veel moeite heb om uit 
 
 Hiernaast heb ik vandaag voor het eerst een package geinstalleerd met npm, genaamd Swiper. Ik was op zoek naar een manier om snel en een op professionele manier een carousel te implementeren in mijn website. Swiper is hier zeer geschikt voor. Alle films worden nu netjes in een carousel getoond waar men doorheen kan navigeren. 
 
+<img width="894" alt="Scherm­afbeelding 2024-04-07 om 13 59 30" src="https://github.com/Martino538/API-2024/assets/32341318/731121bc-f961-4bf5-9f1a-09ee1c709bd9"> </br>
+
+
 Ook heb ik de styling een beetje aangepakt en staat er nu een film uitgelicht in de pageheader. Deze pageheader wil ik later laten rouleren tussen de 5 best scorende films. Hiervoor moet ik de de data die server-side gefetcht wordt ook client-side beschikbaar maken voor JavaScript. Dit ga ik morgen vragen aan de docent.
 
 ## Dag 3
 
 Vandaag heb ik mij bezig gehouden met het koppelen van een tweede API call. Ik wil namelijk niet alleen de films tonen, maar ook de bijbehorende data van die film waar je op klikt. Hierbij heb ik geleerd over het gebruik van 'Promise'. Ook ben ik mij meer bewust geworden bij het gebruik van Async/Await. Soms wilde de data al laden voordat de pagina geladen was, wat fouten veroorzaakte.
 
-Momenteel is het mogelijk om op een film te drukken en wordt de detailpagina geladen met de bijbehorende data getoond.
+<img width="1039" alt="Scherm­afbeelding 2024-04-07 om 13 58 29" src="https://github.com/Martino538/API-2024/assets/32341318/3abfccdb-2c11-4a79-ad7e-9cd58ad08b7a"> </br>
+
+
+Momenteel is het mogelijk om op een film te drukken en wordt de detailpagina geladen met de bijbehorende data getoond. Het resultaat van de applicatie ziet er als volgt uit:
+
+![localhost_3000_](https://github.com/Martino538/API-2024/assets/32341318/1b44d23b-ab7d-475f-abf7-7881224d8602) </br>
+
+![Detailpagina](https://github.com/Martino538/API-2024/assets/32341318/f2a84b24-bd3f-4ef0-8575-73dab2383b0f)
+
 
 ## Dag 4
