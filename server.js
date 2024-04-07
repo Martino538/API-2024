@@ -25,6 +25,7 @@ async function fetchMultipleUrls(api_token) {
 }
 
 async function fetchMovieDetails(movieId) {
+  console.log(ok);
   const apiKey = process.env.API_TOKEN;
   const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=nl-NL`;
   const response = await fetch(url);
