@@ -36,7 +36,6 @@ async function fetchMovieDetails(movieId) {
 app.get("/", async (req, res) => {
   try {
     const { movies, trendingMovies } = await fetchMultipleUrls(process.env.API_TOKEN);
-    console.log(movies)
     res.render('pages/index', {movies, trendingMovies});
   } catch (error) {
     console.error('Fetching movies failed:', error);

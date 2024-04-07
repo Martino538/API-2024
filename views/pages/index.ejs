@@ -4,7 +4,6 @@
         <%- include('../partials/head.ejs'); %>
         <title>Martijn's API site</title>
     </head>
-
     <body>
         <%- include('../components/nav.ejs'); %>
         <div class="content-wrapper">
@@ -27,9 +26,7 @@
                     <h2>Trending</h2>
                 </div>
                 <div class="movies swiper">
-                    <!-- Additional required wrapper -->
                     <div class="swiper-wrapper">
-                    <!-- Slides -->
                     <% trendingMovies.forEach(trendingMovie => { %>
                         <a href="/movie/<%= trendingMovie.id %>" class="swiper-slide card">
                             <div class="card-image">
@@ -48,9 +45,7 @@
                     <h2>Actie</h2>
                 </div>
                 <div class="movies swiper">
-                    <!-- Additional required wrapper -->
                     <div class="swiper-wrapper">
-                    <!-- Slides -->
                     <% movies.forEach(movie => { %>
                         <a href="/movie/<%= movie.id %>" class="swiper-slide card">
                             <div class="card-image">
