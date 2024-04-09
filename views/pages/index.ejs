@@ -7,19 +7,24 @@
     <body>
         <%- include('../components/nav.ejs'); %>
         <div class="content-wrapper">
-            <div class="featured-wrapper">
-                <div class="featured-overlay">
-                    <div class="featured-text">
-                        <h3>Superheroes IV: The legend has been told</h3>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                            Facilis distinctio quos praesentium ratione ad rerum totam 
-                            repellat saepe omnis, voluptas asperiores placeat corrupti 
-                            fugiat unde expedita nihil dicta vero porro?</p>
-                        <div class="button-holder">
-                            <button type="button" class="watchBtn">Watch now</button>
+            <div class="top5movies swiper">
+                <div class="swiper-wrapper">
+                    <% top5movies.forEach(top5movie => { %>
+                        <div class="featured-wrapper swiper-slide">
+                            <!-- <img src="https://image.tmdb.org/t/p/w500<%=top5movie.poster_path%>" alt="Image of the trending movie: <%=top5movie.title%>"> -->
+                            <div class="featured-overlay">
+                                <div class="featured-text">
+                                    <h3><%= top5movie.title %></h3>
+                                    <p><%= top5movie.overview %></p>
+                                    <div class="button-holder">
+                                        <button type="button" class="watchBtn">Watch now</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    <% }); %>
                 </div>
+                <div class="swiper-pagination"></div>
             </div>
             <div class="category-container">
                 <div class="category-title">

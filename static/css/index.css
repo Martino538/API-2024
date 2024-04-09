@@ -5,14 +5,19 @@
     --white: #ffffff;
     --black: #000000;
     --blue: #0e1122;
+    --font-Bebas: "Bebas Neue", sans-serif;
+    --font-Roboto: "Roboto", sans-serif;
+    --font-fontAwesome: "Font Awesome 6", sans-serif;
 }
 
 body {
     margin: 0;
     padding: 0;
-    font-family: "Bebas Neue", sans-serif;
+    font-family: var(--font-Bebas);
     background-color: var(--blue);
 }
+
+
 
 header {
     height: 10vh;
@@ -49,9 +54,9 @@ header {
 
         .nav-content {
             height: 100%;
-            flex: 1 0 calc(100% - 200px);
-            width: calc(100% - 200px);
-            max-width: calc(100% - 200px);
+            flex: 1 0 calc(100% - 500px);
+            width: calc(100% - 500px);
+            max-width: calc(100% - 500px);
 
             ul {
                 height: 100%;
@@ -74,6 +79,55 @@ header {
                         &:hover {
                             cursor: pointer;
                             color: red;
+                        }
+                    }
+                }
+            }
+        }
+
+        .nav-search {
+            height: 100%;
+            flex: 1 0 300px;
+            max-width: 300px;
+            width: 300px;
+            display: flex;
+            align-items: center;
+
+            form {
+                width: 100%;
+                position: relative;
+
+                .input-wrapper {
+                    position: relative;
+
+                    .input-icon {
+                        position: absolute;
+                        left: 5px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        color: var(--white);
+                        padding-left: 5px;
+                    }
+
+                    input {
+                        width: 80%;
+                        background-color: transparent;
+                        border: 2px solid var(--white);
+                        padding: 12px 10px 10px 30px;
+                        position: relative;
+                        color: var(--white);
+                        font-family: var(--font-Bebas);
+                        letter-spacing: 1px;
+                        font-size: 20px;
+        
+                        &::placeholder {
+                            color: var(--white);
+                            font-family: var(--font-Bebas);
+                            letter-spacing: 0;
+                        }
+        
+                        &:focus-visible {
+                            border-radius: 0;
                         }
                     }
                 }
@@ -105,9 +159,13 @@ h1 {
     font-size: 65px;
 }
 
-h1, h2 {
+h1, h2, h3 {
     color: var(--white);
     letter-spacing: 3px;
+}
+
+h2 {
+    font-size: 55px;
 }
 
 h3 {
@@ -116,8 +174,15 @@ h3 {
     letter-spacing: 3px;
 }
 
+h4 {
+    margin: 0;
+    color: var(--white);
+    letter-spacing: 1px;
+    font-size: 18px;
+}
+
 p {
-    font-family: "Roboto", sans-serif;
+    font-family: var(--font-Roboto)
 }
 
 .content-wrapper {
@@ -159,12 +224,13 @@ p {
 
                 .button-holder {
                     margin-top: 15px;
+
                     button {
                         border: 3px solid var(--white);
                         background-color: transparent;
                         color: white;
                         padding: 15px 25px;
-                        font-family: "Bebas Neue", sans-serif;
+                        font-family: var(--font-Bebas);
                         letter-spacing: 2px;
                         font-size: 16px;
                         transition: .3s all ease-in-out;
@@ -187,6 +253,19 @@ p {
 
 .movies, .category-title {
     padding-left: 50px;
+}
+
+.swiper-pagination-bullet {
+    background-color: var(--white);
+    width: 10px;
+    height: 10px;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid var(--white);
+    width: 7px;
+    height: 7px;
 }
 
 .swiper-button-next, .swiper-button-prev {
@@ -212,8 +291,169 @@ p {
 
 /* ---------- MOVIE DETAILS PAGINA ---------- */
 
+.container {
+    padding: 0 350px;
+}
+
 .movie-details {
+    margin: 150px 0;
+
     p {
         color: var(--white);
     }
+
+    .movie-content {
+        display: flex;
+        gap: 30px;
+
+        .col-left {
+            display: flex;
+            flex: 1 0 calc(50% - 30px);
+            width: calc(50% - 30px);
+            max-width: calc(50% - 30px);
+            justify-content: flex-end;
+            align-items: flex-start;
+
+            img {
+                width: 400px;
+                object-fit: contain;
+            }
+        }
+
+        .col-right {
+            display: flex;
+            flex: 1 0 50%;
+            width: 50%;
+            max-width: 50%;
+
+            .movie-content-wrapper {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+                position: relative;
+
+                h2 {
+                    margin: 0;
+                    max-width: 400px;
+                }
+
+                .movie-group {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+
+                    &:first-of-type {
+                        flex-direction: row;
+                        gap: 15px;
+                    }
+
+                    button {
+                        padding: 10px 35px;
+                        font-family: var(--font-Bebas);
+                        font-size: 18px;
+                        border: 0;
+
+                        &:last-of-type {
+                            background-color: transparent;
+                            border: 2px solid var(--white);
+                            color: var(--white);
+                        }
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+
+                    p {
+                        margin: 0;
+                    }
+                }
+
+                .star-container {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+
+                    figure {
+                        margin: 0;
+                        width: 70px;
+                        height: 70px;
+
+                        .star-rating {
+                            width: 70px;
+                            height: 70px;
+                            position: absolute;
+                        }
+
+                        .star-number {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -30%);
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .movie-reviews {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+
+        h2 {
+            margin: 70px 0 0 0;
+        }
+
+        .review {
+            .review-author {
+                font-size: 22px;
+                margin: 0;
+            }
+
+            .review-date {
+                margin: 0 0 30px 0;
+            }
+
+            .review-group {
+                display: flex;
+                gap: 15px;
+
+                .review-image-wrapper {
+                    .review-image {
+                        width: 100px;
+                        height: 100px;
+                    }
+                }
+
+                .review-text {
+                    margin: 0;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 6;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
 }
+
+/* ---------- ZOEK RESULTATEN PAGINA ---------- */
+
+.results-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 150px 0;
+
+    .card {
+        width: fit-content;
+
+        img {
+            width: 200px;
+        }
+    }
+}
+

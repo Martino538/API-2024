@@ -6,28 +6,55 @@ dotenv.config();
 // Create an Express application
 const app = express();
 
+// Get API key
+const apiKey = process.env.API_TOKEN;
+
 // Middleware setup
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('static')); // Serve static files from the 'public' directory
 app.set('view engine', 'ejs');
 
-async function fetchMultipleUrls(api_token) {
-  const url1 = `https://api.themoviedb.org/3/discover/movie?api_key=${api_token}&language=nl-NL&with_genres=28`;
-  const url2 = `https://api.themoviedb.org/3/movie/top_rated?api_key=${api_token}&language=nl-NL`;
+async function fetchMultipleUrls(apiKey) {
+  const url1 = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=nl-NL&with_genres=28`;
+  const url2 = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=nl-NL`;
+  const url3 = `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}&language=nl-NL`;
 
   // Fetch data from both URLs concurrently
-  const [data1, data2] = await Promise.all([
+  const [data1, data2, data3] = await Promise.all([
     fetch(url1).then(response => response.json()),
     fetch(url2).then(response => response.json()),
+    fetch(url3).then(response => response.json()),
   ]);
   
-  return { movies: data1.results, trendingMovies: data2.results }; // Return an object containing both sets of data
+  const top5movies = data3.results.sort((a, b) => b.vote_count - a.vote_count).slice(0, 5);
+
+  return { movies: data1.results, trendingMovies: data2.results, top5movies: top5movies}; // Return an object containing both sets of data
 }
 
 async function fetchMovieDetails(movieId) {
-  console.log(ok);
-  const apiKey = process.env.API_TOKEN;
-  const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=nl-NL`;
+  const url = `https://api.themoviedb.org/3/movie/${movieId}&language=nl-NL?api_key=${apiKey}`;
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+}
+
+async function fetchMovieImages(movieId) {
+  const url = `https://api.themoviedb.org/3/movie/${movieId}/images?api_key=${apiKey}`;
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+}
+
+async function fetchSearchResult(searchTerm) {
+  const url = `https://api.themoviedb.org/3/search/movie?query=${searchTerm}&include_adult=false&language=nl-NL&page=1&api_key=${apiKey}`;
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+}
+
+async function fetchMovieReviews(movieId) {
+  console.log(movieId);
+  const url = `https://api.themoviedb.org/3/movie/${movieId}/reviews?language=en-US&page=1&api_key=${apiKey}`;
   const response = await fetch(url);
   const data = await response.json();
   return data;
@@ -36,8 +63,8 @@ async function fetchMovieDetails(movieId) {
 // Routes
 app.get("/", async (req, res) => {
   try {
-    const { movies, trendingMovies } = await fetchMultipleUrls(process.env.API_TOKEN);
-    res.render('pages/index', {movies, trendingMovies});
+    const { movies, trendingMovies, top5movies } = await fetchMultipleUrls(process.env.API_TOKEN);
+    res.render('pages/index', {movies, trendingMovies, top5movies});
   } catch (error) {
     console.error('Fetching movies failed:', error);
     res.status(500).send('Failed to fetch movies');
@@ -49,13 +76,32 @@ app.get("/movie/:id", async (req, res) => {
   try {
     const movieId = req.params.id;
     const movieData = await fetchMovieDetails(movieId);
-    res.render('pages/movie_detail', { movie: movieData });
+    const movieImagesData = await fetchMovieImages(movieId);
+    const reviewData = await fetchMovieReviews(movieId);
+
+    console.log(reviewData.results.length);
+
+    res.render('pages/movie_detail', { movie: movieData, movieImages: movieImagesData.posters, movieReviews: reviewData.results});
   } catch (error) {
     console.error('Fetching movie details failed:', error);
     res.status(500).send('Failed to fetch movie details');
   }
 });
 
+// Search route
+app.get("/search", async (req, res) => {
+  try {
+    const searchTerm = req.query.term;
+    const searchData = await fetchSearchResult(searchTerm);
+
+    const searchWithDataImages = searchData.results.filter(movie => movie.poster_path != null);
+
+    res.render('pages/search_results', { title: "Resultaten", searchdataResults: searchWithDataImages, searchTerm});
+  } catch (error) {
+    console.error('Fetching movie details failed:', error);
+    res.status(500).send('Failed to fetch movie details');
+  }
+});
 
 // Start the server
 const PORT = process.env.PORT || 3000;
