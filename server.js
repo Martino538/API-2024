@@ -11,7 +11,7 @@ const apiKey = process.env.API_TOKEN;
 
 // Middleware setup
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('static')); // Serve static files from the 'public' directory
+app.use(express.static('dist/assets')); // Serve static files from the 'public' directory
 app.set('view engine', 'ejs');
 
 async function fetchMultipleUrls(apiKey) {
