@@ -9,13 +9,13 @@
         <div class="content-wrapper">
             <div class="top5movies swiper">
                 <div class="swiper-wrapper">
-                    <% top5movies.forEach(top5movie => { %>
+                    <% top5movies.forEach(movie => { %>
                         <div class="featured-wrapper swiper-slide">
-                            <!-- <img src="https://image.tmdb.org/t/p/w500<%=top5movie.poster_path%>" alt="Image of the trending movie: <%=top5movie.title%>"> -->
+                            <img src="https://image.tmdb.org/t/p/w500<%=movie.backdrop_path%>" class="backdrop-img" alt="Image of the trending movie: <%=movie.title%>">
                             <div class="featured-overlay">
                                 <div class="featured-text">
-                                    <h3><%= top5movie.title %></h3>
-                                    <p><%= top5movie.overview %></p>
+                                    <h3><%= movie.title %></h3>
+                                    <p><%= movie.overview %></p>
                                     <div class="button-holder">
                                         <button type="button" class="watchBtn">Watch now</button>
                                     </div>
@@ -24,18 +24,17 @@
                         </div>
                     <% }); %>
                 </div>
-                <div class="swiper-pagination"></div>
             </div>
             <div class="category-container">
                 <div class="category-title">
-                    <h2>Trending</h2>
+                    <h2>Top rated</h2>
                 </div>
                 <div class="movies swiper">
                     <div class="swiper-wrapper">
-                    <% trendingMovies.forEach(trendingMovie => { %>
-                        <a href="/movie/<%= trendingMovie.id %>" class="swiper-slide card">
+                    <% trendingMovies.forEach(movie => { %>
+                        <a href="/movie/<%= movie.id %>" class="swiper-slide card">
                             <div class="card-image">
-                                <img src="https://image.tmdb.org/t/p/w500<%=trendingMovie.poster_path%>" alt="Image of <%=trendingMovie.title%>">
+                                <img src="https://image.tmdb.org/t/p/w500<%=movie.poster_path%>" alt="Image of <%=movie.title%>">
                             </div>
                         </a>
                     <% }); %>
@@ -44,14 +43,13 @@
                     <div class="swiper-button-prev"></div>
                 </div>
             </div>
-
             <div class="category-container">
                 <div class="category-title">
-                    <h2>Actie</h2>
+                    <h2>Discover movies</h2>
                 </div>
                 <div class="movies swiper">
                     <div class="swiper-wrapper">
-                    <% movies.forEach(movie => { %>
+                    <% discoverMovies.forEach(movie => { %>
                         <a href="/movie/<%= movie.id %>" class="swiper-slide card">
                             <div class="card-image">
                                 <img src="https://image.tmdb.org/t/p/w500<%=movie.poster_path%>" alt="Image of <%=movie.title%>">

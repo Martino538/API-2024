@@ -28,7 +28,7 @@ async function fetchMultipleUrls(apiKey) {
   
   const top5movies = data3.results.sort((a, b) => b.vote_count - a.vote_count).slice(0, 5);
 
-  return { movies: data1.results, trendingMovies: data2.results, top5movies: top5movies}; // Return an object containing both sets of data
+  return { discoverMovies: data1.results, topratedMovies: data2.results, trendingMovies: data3.results, top5movies: top5movies};
 }
 
 async function fetchMovieDetails(movieId) {
@@ -63,8 +63,8 @@ async function fetchMovieReviews(movieId) {
 // Routes
 app.get("/", async (req, res) => {
   try {
-    const { movies, trendingMovies, top5movies } = await fetchMultipleUrls(process.env.API_TOKEN);
-    res.render('pages/index', {movies, trendingMovies, top5movies});
+    const { movies, trendingMovies, discoverMovies, top5movies} = await fetchMultipleUrls(process.env.API_TOKEN);
+    res.render('pages/index', {movies, trendingMovies, discoverMovies, top5movies});
   } catch (error) {
     console.error('Fetching movies failed:', error);
     res.status(500).send('Failed to fetch movies');
