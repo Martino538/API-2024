@@ -2,65 +2,229 @@
 <html lang="en">
     <head>
         <%- include('../partials/head.ejs'); %>
-        <title>Martijn's API site</title>
+        <title>Portfolio | Martijn Kooijman</title>
     </head>
     <body>
         <%- include('../components/nav.ejs'); %>
-        <div class="content-wrapper">
-            <div class="top5movies swiper">
-                <div class="swiper-wrapper">
-                    <% top5movies.forEach(movie => { %>
-                        <div class="featured-wrapper swiper-slide">
-                            <img src="https://image.tmdb.org/t/p/w500<%=movie.backdrop_path%>" class="backdrop-img" alt="Image of the trending movie: <%=movie.title%>">
-                            <div class="featured-overlay">
-                                <div class="featured-text">
-                                    <h3><%= movie.title %></h3>
-                                    <p><%= movie.overview %></p>
-                                    <div class="button-holder">
-                                        <button type="button" class="watchBtn">Watch now</button>
-                                    </div>
+        <section class="section pageheader" id="pageheader">
+            <div class="content-wrapper">
+                <div class="col-left">
+                    <div class="content">
+                        <div class="intro-text">
+                            <p class="gradient greeting">Goedemiddag!</p>
+                            <h1>Ik ben Martijn Kooijman, <span class="gradient">Front-end Developer & UI/UX Designer</span></h1>
+                            <p>Leuk dat je interesse hebt in mijn portfolio! Ik ben een gepassioneerde Front-end developer en UX/Designer. Momenteel volg ik de opleiding Communicatie & Multimedia Design
+                                op de Hogeschool van Amsterdam. Kijk gerust even rond!
+                            </p>
+                            <div class="button-wrapper">
+                                <a href="#" class="btn"><i class="fa-solid fa-eye"></i> Bekijk CV</a>
+                                <a href="tel:+31612345678" class="btn btn-outline"><i class="fa-solid fa-phone"></i> Geef een belletje!</a>
+                            </div>
+                            <img src="./img/arrow.svg" alt="">
+                        </div>
+                        <div class="socials">
+                            <a href="https://nl.linkedin.com/in/martijn-kooijman-604040155" target="_blank" rel="noopener noreferrer" class="social-link">
+                                <div class="social-icon">
+                                    <i class="fa-brands fa-linkedin-in"></i>
                                 </div>
+                            </a>
+                            <a href="https://github.com/Martino538" target="_blank" rel="noopener noreferrer" class="social-link">
+                                <div class="social-icon">
+                                    <i class="fa-brands fa-github"></i>
+                                </div>
+                            </a>
+                            <a href="https://www.instagram.com/_martijnk/" target="_blank" rel="noopener noreferrer" class="social-link">
+                                <div class="social-icon">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-right">
+                    <img src="./img/martijn-front.png" alt="">
+                </div>
+            </div>
+        </section>
+        <section class="section skills" id="skills">
+            <div class="container">
+                <div class="content">
+                    <h2>Skills</h2>
+                    <ul class="skills-wrapper">
+                        <li class="skill">
+                            <div class="skill-image">
+                                <img src="./img/photoshop-icon.svg" alt="image of Photoshop logo">
+                            </div>
+                        </li>
+                        <li class="skill">
+                            <div class="skill-image">
+                                <img src="./img/illustrator-icon.svg" alt="image of Illustrator logo">
+                            </div>                        
+                        </li>
+                        <li class="skill">
+                            <div class="skill-image">
+                                <img src="./img/xd-icon.svg" alt="image of Adobe XD logo">
+                            </div>                        
+                        </li>
+                        <li class="skill">
+                            <div class="skill-image">
+                                <img src="./img/html-icon.svg" alt="image of html logo">
+                            </div>                        
+                        </li>
+                        <li class="skill">
+                            <div class="skill-image">
+                                <img src="./img/css-icon.svg" alt="image of CSS logo">
+                            </div>                        
+                        </li>
+                        <li class="skill">
+                            <div class="skill-image">
+                                <img src="./img/js-icon.svg" alt="image of JavaScript logo">
+                            </div>                        
+                        </li>
+                        <li class="skill">
+                            <div class="skill-image">
+                                <img src="./img/php-icon.svg" alt="image of PHP logo">
+                            </div>                        
+                        </li>
+                        <li class="skill">
+                            <div class="skill-image">
+                                <img src="./img/sass-icon.svg" alt="image of Sass logo">
+                            </div>                        
+                        </li>
+                        <li class="skill">
+                            <div class="skill-image">
+                                <img src="./img/nodejs-icon.svg" alt="image of NodeJs logo">
+                            </div>                        
+                        </li>
+                        <li class="skill">
+                            <div class="skill-image">
+                                <img src="./img/github-icon.svg" alt="image of Github logo">
+                            </div>                        
+                        </li>
+                        <li class="skill">
+                            <div class="skill-image">
+                                <img src="./img/wordpress-icon.svg" alt="image of Wordpress logo">
+                            </div>
+                        </li>
+                        <li class="skill">
+                            <div class="skill-image">
+                                <img src="./img/chatgpt-icon.svg" alt="image of Chatgpt logo">
+                            </div>
+                        </li>
+                        <li class="skill">
+                            <div class="skill-image">
+                                <img src="./img/figma-icon.svg" alt="image of Figma logo">
+                            </div>                        
+                        </li>
+                        <li class="skill">
+                            <div class="skill-image">
+                                <img src="./img/framer-icon.svg" alt="image of Framer logo">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="section cases" id="cases">
+            <h2>Projecten</h2>
+            <div class="cases-slider">
+                <div class="swiper cases-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="./img/kunstinc.png" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./img/fancy-fireworks.png" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./img/belastingdienst.png" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./img/api.png" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./img/dunkin.png" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./img/huiskamer.png" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./img/pokedex.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="introduction" id="over-mij">
+            <div class="container">
+                <div class="content">
+                    <div class="col-left">
+                        <div class="introduction-image">
+                            <img src="./img/martijn-close.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-right">
+                        <div class="introduction-text">
+                            <h2>Wie is Martijn!?</h2>
+                            <p>Mijn reis is ooit begonnen op het ROC van Amsterdam waar ik mijn interesse in het programmeren en ontwerpen van webapplicaties ontdekte. 
+                                Nu ben ik doorgegroeid naar mijn huidige studie: Communicatie & Multimedia Design aan de Hogeschool van Amsterdam.
+                                Sindsdien heb ik aan diverse projecten gewerkt waarbij ik naast het ontwerpen ook ervaring heb opgedaan in het coderen van zowel de front-end als back-end.
+                                Dit heeft mij geholpen om mijn technische vaardigheden te verfijnen en mijn oog voor detail en uitstraling te ontwikkelen.</p>
+                            <h3>Mijn drijfveer</h3>
+                            <p>Wat mij echt motiveert, is het bouwen van applicaties die zowel vlekkeloos functioneren als prettig zijn om te gebruiken.
+                                Ik geniet ervan om efficiënte code te schrijven en deze te combineren met ontwerpen die aantrekkelijk en gebruiksvriendelijk zijn.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="col-left">
+                        <div class="introduction-text">
+                            <h2>Coding by day, DJ by night...</h2>
+                            <p>Naast mijn ambities voor het coderen en ontwerpen van applicaties heb ik een grote passie voor muziek! Ik de weekenden sta ik daarom regelmatig
+                                achter de draaitafel om een fantastische avond voor de mensen te verzorgen. Ik heb mijn eigen bedrijf en richt mij op clubs, bedrijfsfeesten,
+                                 verjaardagsfeesten en bruiloften. Een kleine impressie:</p>
+                            <div class="socials">
+                                <a href="https://www.instagram.com/martin_cage_" target="_blank" rel="noopener noreferrer" class="social-link">
+                                    <div class="social-icon">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </div>
+                                </a>
+                                <a href="https://www.youtube.com/@MartinCageOfficial" target="_blank" rel="noopener noreferrer" class="social-link">
+                                    <div class="social-icon">
+                                        <i class="fa-brands fa-youtube"></i>
+                                    </div>
+                                </a>
                             </div>
                         </div>
-                    <% }); %>
-                </div>
-            </div>
-            <div class="category-container">
-                <div class="category-title">
-                    <h2>Top rated</h2>
-                </div>
-                <div class="movies swiper">
-                    <div class="swiper-wrapper">
-                    <% trendingMovies.forEach(movie => { %>
-                        <a href="/movie/<%= movie.id %>" class="swiper-slide card">
-                            <div class="card-image">
-                                <img src="https://image.tmdb.org/t/p/w500<%=movie.poster_path%>" alt="Image of <%=movie.title%>">
-                            </div>
-                        </a>
-                    <% }); %>
                     </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                </div>
-            </div>
-            <div class="category-container">
-                <div class="category-title">
-                    <h2>Discover movies</h2>
-                </div>
-                <div class="movies swiper">
-                    <div class="swiper-wrapper">
-                    <% discoverMovies.forEach(movie => { %>
-                        <a href="/movie/<%= movie.id %>" class="swiper-slide card">
-                            <div class="card-image">
-                                <img src="https://image.tmdb.org/t/p/w500<%=movie.poster_path%>" alt="Image of <%=movie.title%>">
-                            </div>
-                        </a>
-                    <% }); %>
+                    <div class="col-right">
+                        <div class="introduction-image">
+                            <img src="./img/martijn-back.jpg" alt="">
+                        </div>
                     </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
                 </div>
             </div>
-        </div>
+        </section>
+        <section class="section cv" id="cv">
+            <article class="cv-card">
+                <div class="card-body">
+                    <h3>Martijn Kooijman</h3>
+                    <h4 class="gradient">Front-end Developer, UX/UI Designer</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus iusto, voluptas incidunt dignissimos 
+                        fuga rerum veritatis voluptatem voluptates</p>
+                </div>
+                <div class="card-footer">
+                    <h4>Werkervaring</h4>
+                    <ul>
+                        <li>Fresh-Dev | 2023 - 2024</li>
+                        <li>Rendes Vous | 2019 - 2023</li>
+                    </ul>
+                </div>
+            </article>
+            <div class="button-wrapper">
+                <a href="#cv" class="btn card-btn">Bekijk CV</a>
+            </div>
+        </section>
+        <%- include('../partials/footer.ejs'); %>
     </body>
 </html>
